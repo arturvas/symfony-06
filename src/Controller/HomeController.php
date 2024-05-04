@@ -8,7 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
@@ -35,7 +34,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/category/{slug}', name: 'app_category')]
+    #[Route('/category/{slug}', name: 'app_category', methods: ['GET', 'POST'])]
     public function category(string $slug = null): Response
     {
         $categories = [
