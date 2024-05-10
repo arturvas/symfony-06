@@ -12,8 +12,6 @@ class NewsController extends AbstractController
     #[Route('api/news/{id}', name: 'api_new', methods: ['GET'])]
     public function getNew(int $id = null): Response
     {
-        //        dd('API Route ' . $id);
-        // TODO - make a real query
 
         $new = [
             "id" => $id,

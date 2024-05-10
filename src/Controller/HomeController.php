@@ -2,10 +2,7 @@
 
 namespace App\Controller;
 
-use App\Service\StringManipulationService;
-use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
@@ -14,18 +11,8 @@ class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
     public function index(
-        LoggerInterface $logger,
-        HttpClientInterface $httpClient,
-        StringManipulationService $stringManipulationService,
         Environment $environment,
     ): Response {
-
-        $test = 'loren[ipson]test]';
-        $newString = $stringManipulationService->cleanString($test);
-
-        $response = $httpClient->request('GET', 'https://127.0.0.1:8000/api/news/22');
-
-        $logger->info('Accessed home page');
 
         $categories = [
             ['title' => 'World',        'text' => 'News about World'],
@@ -41,11 +28,8 @@ class HomeController extends AbstractController
             ['title' => 'Style',        'text' => 'News about Life Style'],
             ['title' => 'Travel',       'text' => 'News about Travels'],
         ];
-        $logger->error('Created Array');
 
         $pageTitle = "News Systems";
-
-        $logger->warning('Defined Title');
 
         $html = $environment->render('home/index.html.twig', [
             'categories' => $categories,
