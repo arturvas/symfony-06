@@ -22,6 +22,16 @@
             </div>
         </div>
 
+        <div data-controller="hello"></div>
+        <div {{ stimulus_controller('hello') }}></div>
+        <div {{ stimulus_controller('counter') }}></div>
+        <div data-controller="clipboard" data-clipboard-success-content-value="Copied!">
+        <input type="text" placeholder="Click the button to copy me!" data-clipboard-target="source" />
+
+        <button type="button" data-action="clipboard#copy" data-clipboard-target="button">Copy to clipboard</button>
+        </div>
+
+
         <div class="row mb-2">
             <div class="col-md-6">
                 <div

@@ -29,7 +29,7 @@ class HomeController extends AbstractController
             ['title' => 'Travel',       'text' => 'News about Travels'],
         ];
 
-        $pageTitle = "News Systems";
+        $pageTitle = "Large News";
 
         $html = $environment->render('home/index.html.twig', [
             'categories' => $categories,

@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
     <head>
-        <script src="{{ asset('assets/js/color-modes.js') }}"></script>
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" sizes="16x16" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}" />
-
-        <title>
-            {% block title %}Welcome!{% endblock %}
-        </title>
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('build/images/favicon.png') }}" />
 
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -18,6 +13,11 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
+        <title>
+            {% block title %}Welcome!{% endblock %}
+        </title>
+
     </head>
 
     <body>
