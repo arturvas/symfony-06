@@ -13,20 +13,7 @@ class HomeController extends AbstractController
     public function index(Environment $environment): Response
     {
 
-        $categories = [
-            ['title' => 'World',        'text' => 'News about World'],
-            ['title' => 'Brazil',       'text' => 'News about Brazil'],
-            ['title' => 'Technology',   'text' => 'News about Technology'],
-            ['title' => 'Design',       'text' => 'News about Design'],
-            ['title' => 'Culture',      'text' => 'News about Culture'],
-            ['title' => 'Business',     'text' => 'News about Business'],
-            ['title' => 'Politics',     'text' => 'News about Politics'],
-            ['title' => 'Opinion',      'text' => 'News about Opinion'],
-            ['title' => 'Science',      'text' => 'News about Science'],
-            ['title' => 'Health',       'text' => 'News about Health Care'],
-            ['title' => 'Style',        'text' => 'News about Life Style'],
-            ['title' => 'Travel',       'text' => 'News about Travels'],
-        ];
+        $categories = $this->getCategories();
 
         $pageTitle = "Large News";
 
@@ -41,20 +28,7 @@ class HomeController extends AbstractController
     #[Route('/category/{slug}', name: 'app_category', methods: ['GET', 'POST'])]
     public function category(string $slug = null): Response
     {
-        $categories = [
-            ['title' => 'world',        'text' => 'News about World'],
-            ['title' => 'brazil',       'text' => 'News about Brazil'],
-            ['title' => 'technology',   'text' => 'News about Technology'],
-            ['title' => 'design',       'text' => 'News about Design'],
-            ['title' => 'culture',      'text' => 'News about Culture'],
-            ['title' => 'business',     'text' => 'News about Business'],
-            ['title' => 'politics',     'text' => 'News about Politics'],
-            ['title' => 'opinion',      'text' => 'News about Opinion'],
-            ['title' => 'science',      'text' => 'News about Science'],
-            ['title' => 'health',       'text' => 'News about Health Care'],
-            ['title' => 'style',        'text' => 'News about Life Style'],
-            ['title' => 'travel',       'text' => 'News about Travels'],
-        ];
+        $categories = $this->getCategories();
 
         $pageTitle = ucfirst($slug);
 
@@ -123,5 +97,27 @@ class HomeController extends AbstractController
                 "created_at" => new \DateTime('2023-02-16 12:50'),
             ],
         ];
+    }
+
+    /**
+     * @return array[]
+     */
+    public function getCategories(): array
+    {
+        $categories = [
+            ['title' => 'world', 'text' => 'News about World'],
+            ['title' => 'brazil', 'text' => 'News about Brazil'],
+            ['title' => 'technology', 'text' => 'News about Technology'],
+            ['title' => 'design', 'text' => 'News about Design'],
+            ['title' => 'culture', 'text' => 'News about Culture'],
+            ['title' => 'business', 'text' => 'News about Business'],
+            ['title' => 'politics', 'text' => 'News about Politics'],
+            ['title' => 'opinion', 'text' => 'News about Opinion'],
+            ['title' => 'science', 'text' => 'News about Science'],
+            ['title' => 'health', 'text' => 'News about Health Care'],
+            ['title' => 'style', 'text' => 'News about Life Style'],
+            ['title' => 'travel', 'text' => 'News about Travels'],
+        ];
+        return $categories;
     }
 }
